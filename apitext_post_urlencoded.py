@@ -18,10 +18,12 @@ def extract_request_details_and_send(file_path):
             key, value = line.split(': ', 1)
             headers[key] = value
 
-        # 提取并解析请求体
-        request_body_start = file_content.index("userId=", file_content.index("Accept-Language: zh-CN,zh;q=0.9"))
-        request_body_end = file_content.index("HTTP/1.1 200", request_body_start)
-        request_body = file_content[request_body_start:request_body_end].strip()
+        # 提取请求体
+        request_body_start = file_content.find("\n\n")
+        request_body_end = file_content.find("HTTP/1.1 200", request_body_start)
+        request_body = file_content[request_body_start + 2:request_body_end].strip()
+
+        # 解析请求体
         original_params = dict(parse_qsl(request_body))
 
         # 测试每个参数被留空的场景
