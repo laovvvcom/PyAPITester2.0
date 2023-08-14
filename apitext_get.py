@@ -19,7 +19,7 @@ def extract_request_details_and_send(file_path):
             key, value = line.split(': ', 1)
             original_headers[key] = value
 
-        test_scenarios(request_method, base_url, original_params, original_headers)
+        scenarios(request_method, base_url, original_params, original_headers)
 
         # 测试 Authorization 或 token 头部为空的场景
         if 'Authorization' in original_headers or 'token' in original_headers:
@@ -31,7 +31,7 @@ def extract_request_details_and_send(file_path):
             send_request(request_method, base_url, original_params, headers)
 
 
-def test_scenarios(request_method, base_url, original_params, original_headers):
+def scenarios(request_method, base_url, original_params, original_headers):
     # 测试每个参数被留空、被删除、整数类型边界值的场景
     for key in original_params.keys():
         params = original_params.copy()
@@ -55,6 +55,7 @@ def send_request(request_method, base_url, params, headers):
     response = requests.request(request_method, base_url, params=params, headers=headers)
     print(f"请求响应状态码: {response.status_code}")
     print(f"请求响应内容: {response.text}")
+    print(f"请求响应耗时: {response.elapsed.total_seconds()} 秒")
     print("="*40)  # 分隔线
 
 

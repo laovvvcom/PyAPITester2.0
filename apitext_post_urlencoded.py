@@ -60,6 +60,7 @@ def send_request(request_method, url, params, headers):
     response = requests.request(request_method, url, data=request_data, headers=headers)
     print(f"请求响应状态码: {response.status_code}")
     print(f"请求响应内容: {response.text}")
+    print(f"请求响应耗时: {response.elapsed.total_seconds()} 秒")
     print("=" * 40)  # 分隔线
 
 
