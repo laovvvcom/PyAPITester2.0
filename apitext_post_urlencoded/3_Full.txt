@@ -1,0 +1,25 @@
+POST http://web-hub.alpha.kai12.cn/api/setting/users/dormant_detect HTTP/1.1
+Host: web-hub.alpha.kai12.cn
+Connection: keep-alive
+Content-Length: 12
+Accept: application/json, text/plain, */*
+real_ip: 117.84.98.197
+terminal: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.5359.125 Safari/537.36
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJzdHVkZW50X2lkIjowLCJzY2hvb2xfaWQiOjAsIm9yZ2FuX2lkIjowLCJ1c2VyX3R5cGUiOjMsImFwcGxpY2F0aW9uIjoiazEyX3BsYXRmb3JtX2FwaSIsImJrdCI6InRlc3QiLCJleHAiOjE2OTIyNDI4MTZ9.pgIKTQ3nOV3eH-GA_wm-aZkKlDLtbvO8ZlLEn6voJys
+Content-Type: application/x-www-form-urlencoded
+Origin: http://web-hub.alpha.kai12.cn
+Referer: http://web-hub.alpha.kai12.cn/spamst/tools/index
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9
+Cookie: OA=1; sys-name=%E5%8C%BA%E5%9F%9F%E5%9F%BA%E7%A1%80%E5%B9%B3%E5%8F%B0; oa-auth-switch=1; ip=117.84.98.197; App-Codes=[%22document%22]; fileType=0; fileDomain=http://file-hub.online.zyyj.com.cn/; spamst=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJzdHVkZW50X2lkIjowLCJzY2hvb2xfaWQiOjAsIm9yZ2FuX2lkIjowLCJ1c2VyX3R5cGUiOjMsImFwcGxpY2F0aW9uIjoiazEyX3BsYXRmb3JtX2FwaSIsImJrdCI6InRlc3QiLCJleHAiOjE2OTIyNDI4MTZ9.pgIKTQ3nOV3eH-GA_wm-aZkKlDLtbvO8ZlLEn6voJys; fileUpDomain=
+
+boundary=200
+HTTP/1.1 200 OK
+Date: Mon, 14 Aug 2023 03:27:15 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 80
+Connection: keep-alive
+Server: k12web
+
+{"data":{"key":"4F30B3ABD17044F7AE4ACAC053171A46"},"msg":"success","status":200}
