@@ -67,11 +67,12 @@ def extract_request_details_and_send(file_path):
 def send_request(request_method, url, params, headers):
     print(f"参数: {params}")
     request_data = '&'.join([f"{key}={value}" for key, value in params.items()])
-    response = requests.request(request_method, url, data=request_data, headers=headers)
+    response = requests.request(request_method, url, data=request_data, headers=headers, timeout=60)
     print(f"请求响应状态码: {response.status_code}")
     print(f"请求响应内容: {response.text}")
     print(f"请求响应耗时: {response.elapsed.total_seconds()} 秒")
     print("=" * 40)  # 分隔线
+
 
 # 获取当前目录下所有 .txt 文件
 file_paths = glob.glob('./apitext_post_urlencoded/*.txt')
