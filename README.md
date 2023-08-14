@@ -28,7 +28,7 @@
 ![演示](https://github.com/nobody1121/PyAPITester2.0/blob/main/img-storage/fiddler.png)
 
 ## 重要更新  
-> 2023.08.11 birth
-> +sql盲注（时间盲注）测试场景
+> 2023.08.11 birth  
+> 加入sql盲注（时间盲注）测试场景
 
 
