@@ -21,6 +21,11 @@
 
 </details>
 
+## 使用方法
+> 1. 将fiddler保存的文本拷贝到对应的文件夹  
+> 2. 比如post方法，请求正文是json结构的文本就放在【apitext_post_json】
+> 3. 然后执行apitext_post_json.py即可
+
 ## 特性
 > 无代码  
 > 高效率
