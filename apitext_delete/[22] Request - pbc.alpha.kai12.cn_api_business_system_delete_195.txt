@@ -1,0 +1,27 @@
+DELETE /api/business/system/delete/195 HTTP/1.1
+Host: pbc.alpha.kai12.cn
+Connection: keep-alive
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBsaWNhdGlvbiI6ImJ1c2luZXNzX3BsYXRmb3JtIiwiYmluZFVzZXJJZCI6NDUsImV4cCI6MTY5MjI0MTQ1NiwiaWF0IjoxNjkxOTgyMjU2LCJqdGkiOiIxOTliY2Y3MC0yNDYwLTRjOGEtOTg0MC1lOWViYWJmMjBhM2UiLCJzdWIiOiJsb2dpbiIsInRva2VuIjoiYnVzaW5lc3M6bG9naW46dG9rZW46NjI2OGVhMzhmZWUxNGJhNzljMmNiNmNhNTUzZWUwMTEiLCJ1c2VySWQiOjQ1fQ.59jFzbg5QBSdyP7Um2x9Z374zAX5w3oy4YgXOZ_je7I
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36
+Accept: */*
+Origin: http://pbc.alpha.kai12.cn
+Referer: http://pbc.alpha.kai12.cn/system/manage
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9
+
+
+HTTP/1.1 200 OK
+Date: Mon, 14 Aug 2023 03:15:04 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Server: k12web
+Vary: Accept-Encoding
+Content-Encoding: gzip
+
+{
+  "code": 200,
+  "msg": "Success",
+  "data": null
+}
+
