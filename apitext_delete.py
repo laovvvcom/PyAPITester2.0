@@ -28,9 +28,6 @@ def extract_request_details_and_send(file_path):
 
 
 def send_request(request_method, url, headers):
-    print(f"请求方法: {request_method}")
-    print(f"URL: {url}")
-    print(f"头部: {headers}")
     response = requests.request(request_method, url, headers=headers)
     print(f"请求响应状态码: {response.status_code}")
     print(f"请求响应内容: {response.text}")
