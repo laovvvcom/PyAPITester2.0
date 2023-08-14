@@ -6,6 +6,7 @@
 - [x] 请求方法GET，内容类型none
 - [x] 请求方法POST，内容类型application/x-www-form-urlencoded
 - [x] 请求方法POST，内容类型application/json
+- [x] 请求方法Delete，内容类型none
 
 </details>
 
