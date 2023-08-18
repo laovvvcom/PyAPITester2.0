@@ -4,12 +4,17 @@ import glob
 
 def extract_request_details_and_send(file_path):
     with open(file_path, 'r') as file:
-        request_line = file.readline().strip()
+        lines = file.readlines()
+        request_line = lines[0].strip()
         request_method, url_path = request_line.split(' ')[0], request_line.split(' ')[1]
-        base_url = "http://pbc.alpha.kai12.cn" + url_path  # Assuming HTTP protocol
+
+        # 提取主机名
+        host_line = [line for line in lines[1:] if line.startswith('Host: ')]
+        host = host_line[0].split(': ')[1].strip() if host_line else ''  # 使用 strip() 清理
+        base_url = "http://" + host + url_path
 
         headers = {}
-        for line in file:
+        for line in lines[1:]:
             line = line.strip()
             if not line:
                 break
