@@ -19,9 +19,9 @@ def extract_request_details_and_send(file_path):
             headers[key] = value
 
         # 提取并解析请求体
-        request_body_start = file_content.index("{", file_content.index("Accept-Language: zh-CN,zh;q=0.9"))
-        request_body_end = file_content.index("}\nHTTP/1.1 200") + 1
-        request_body = file_content[request_body_start:request_body_end]
+        request_body_start = file_content.index("{")
+        request_body_end = file_content.index("\nHTTP/1.1 200")  # 假设响应始终以"HTTP/1.1 200"开始
+        request_body = file_content[request_body_start:request_body_end].strip()
         original_params = json.loads(request_body)
 
         # 测试每个参数被留空的场景
