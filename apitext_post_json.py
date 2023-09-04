@@ -15,8 +15,10 @@ def extract_request_details_and_send(file_path):
             line = line.strip()
             if not line:
                 break
-            key, value = line.split(': ', 1)
-            headers[key] = value
+            if ':' in line:
+                key, value = line.split(':', 1)
+                key = key.strip()  # 剔除头部名称中的多余空格和冒号
+                headers[key] = value.strip()
 
         # 提取并解析请求体
         request_body_start = file_content.index("{")
