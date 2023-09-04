@@ -24,6 +24,7 @@ def extract_request_details_and_send(file_path):
 
         # 测试 Authorization 或 token 头部为空的场景
         if 'Authorization' in original_headers or 'token' in original_headers:
+            print("测试场景：验证鉴权判定")
             headers = original_headers.copy()
             if 'Authorization' in headers:
                 headers['Authorization'] = ''
@@ -37,16 +38,20 @@ def scenarios(request_method, base_url, original_params, original_headers):
     for key in original_params.keys():
         params = original_params.copy()
         params[key] = ['']
+        print("测试场景：验证参数值必填项")
         send_request(request_method, base_url, params, original_headers)
         params = original_params.copy()
         params.pop(key, None)
+        print("测试场景：验证参数必填项")
         send_request(request_method, base_url, params, original_headers)
         if original_params[key][0].isdigit():
             params = original_params.copy()
             params[key] = [999999999]
+            print("测试场景：验证业务规则")
             send_request(request_method, base_url, params, original_headers)
 
     # 测试时间盲注的场景
+    print("测试场景：验证SQL盲注(时间盲注)")
     params = original_params.copy()
     last_key = list(original_params.keys())[-1]  # 获取最后一个参数的键
     params[last_key] = [f"{original_params[last_key][0]} OR IF(1=1, SLEEP(5), 0)"] # 修改最后一个参数的值
@@ -61,6 +66,7 @@ def send_request(request_method, base_url, params, headers):
     print(f"请求响应内容: {response.text}")
     print(f"请求响应耗时: {response.elapsed.total_seconds()} 秒")
     print("="*40)  # 分隔线
+
 
 # 获取当前目录下所有 .txt 文件
 file_paths = glob.glob('./apitext_get/*.txt')

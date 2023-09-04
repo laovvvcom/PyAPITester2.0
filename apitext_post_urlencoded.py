@@ -27,12 +27,14 @@ def extract_request_details_and_send(file_path):
         original_params = dict(parse_qsl(request_body)) if request_body else {}
 
         # 测试 Authorization 或 token 头部为空的场景
-        headers_copy = headers.copy()
-        if 'Authorization' in headers_copy:
-            headers_copy['Authorization'] = ''
-        if 'token' in headers_copy:
-            headers_copy['token'] = ''
-        send_request(request_method, url, original_params, headers_copy)
+        if 'Authorization' in headers or 'token' in headers:
+            headers_copy = headers.copy()
+            if 'Authorization' in headers_copy:
+                headers_copy['Authorization'] = ''
+            if 'token' in headers_copy:
+                headers_copy['token'] = ''
+            print("测试场景：验证鉴权判定")
+            send_request(request_method, url, original_params, headers_copy)
 
         # 如果没有参数，结束此次测试
         if not original_params:
@@ -42,12 +44,14 @@ def extract_request_details_and_send(file_path):
         for key in original_params.keys():
             params = original_params.copy()
             params[key] = ''
+            print("测试场景：验证参数值必填项")
             send_request(request_method, url, params, headers)
 
         # 测试每个参数被删除的场景
         for key in original_params.keys():
             params = original_params.copy()
             params.pop(key, None)
+            print("测试场景：验证参数必填项")
             send_request(request_method, url, params, headers)
 
         # 测试整数类型参数的边界值
@@ -55,12 +59,14 @@ def extract_request_details_and_send(file_path):
             if str(value).isdigit():
                 params = original_params.copy()
                 params[key] = '999999999'
+                print("测试场景：验证业务规则")
                 send_request(request_method, url, params, headers)
 
         # 测试时间盲注的场景
         params = original_params.copy()
         last_key = list(original_params.keys())[-1]
         params[last_key] = original_params[last_key] + " OR IF(1=1, SLEEP(5), 0)"
+        print("测试场景：验证SQL盲注(时间盲注)")
         send_request(request_method, url, params, headers)
 
 

