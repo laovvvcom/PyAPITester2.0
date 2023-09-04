@@ -59,12 +59,15 @@ def extract_request_details_and_send(file_path):
         # 测试时间盲注的场景
         params = original_params.copy()
         last_key = list(original_params.keys())[-1]  # 获取最后一个参数的键
-        if isinstance(params[last_key], int):
-            params[last_key] = f"{original_params[last_key]} OR IF(1=1, SLEEP(5), 0)"  # 修改最后一个参数的值
-        else:
-            params[last_key] = original_params[last_key] + " OR IF(1=1, SLEEP(5), 0)"
-        print("测试场景：验证SQL盲注(时间盲注)")
-        send_request(request_method, url, params, headers)
+        # 检查参数类型是否是字符串或整数，如果是列表则跳过测试
+        if not isinstance(params[last_key], list):
+            if isinstance(params[last_key], int):
+                params[last_key] = f"{original_params[last_key]} OR IF(1=1, SLEEP(5), 0)"  # 修改最后一个参数的值
+            elif isinstance(params[last_key], str):
+                params[last_key] = original_params[last_key] + " OR IF(1=1, SLEEP(5), 0)"
+
+            print("测试场景：验证SQL盲注(时间盲注)")
+            send_request(request_method, url, params, headers)
 
 
 def send_request(request_method, url, params, headers):
