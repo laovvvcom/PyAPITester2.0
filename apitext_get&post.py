@@ -69,6 +69,6 @@ def send_request(request_method, base_url, params, headers):
 
 
 # 获取当前目录下所有 .txt 文件
-file_paths = glob.glob('./apitext_get/*.txt')
+file_paths = glob.glob('apitext_get&post/*.txt')
 for file_path in file_paths:
     extract_request_details_and_send(file_path)
